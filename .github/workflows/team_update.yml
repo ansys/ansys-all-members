@@ -1,0 +1,40 @@
+name: Team Update
+
+on:
+  schedule: # UTC at 0300
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+  pull_request:
+  push:
+    tags:
+      - "*"
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  team_update:
+    name: Update the pyansys/all-members team
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install project requirements
+        run: |
+          pip install pygithub
+
+      - name: Update the team members
+        env:
+          TOKEN: ${{ secrets.ALL_MEMBERS_UPD_TOKEN }}
+        run: |
+          python update_team.py
