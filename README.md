@@ -26,5 +26,5 @@ user its installation, we have created a requiorements file: ``requirements.txt`
 the latest version of the package by doing as follows with the ``pip`` package manager:
 
 ```bash
-    pip install pygithub
+    pip install -r requirements.txt
 ```
