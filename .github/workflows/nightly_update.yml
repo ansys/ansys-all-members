@@ -1,0 +1,28 @@
+name: Nightly Team Update
+
+on:
+  schedule: # UTC at 0300
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  nightly_docs_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install project requirements
+        run: |
+          pip install pygithub
+
+      - name: Update the team members
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python update_team.py
