@@ -34,6 +34,6 @@ jobs:
 
       - name: Update the team members
         env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.ALL_MEMBERS_UPD_TOKEN }}
         run: |
           python update_team.py
