@@ -48,6 +48,9 @@ print(
 if gAllMembersTeam_members.totalCount != gOrg_members.totalCount:
     print("Users missing... let us check which ones!")
 
+    # Store the difference
+    diff = gOrg_members.totalCount - gAllMembersTeam_members.totalCount
+
     # Let us check which are the missing members
     usersToAdd = []
     for gOrg_member in gOrg_members:
@@ -55,6 +58,10 @@ if gAllMembersTeam_members.totalCount != gOrg_members.totalCount:
         if not gAllMembersTeam.has_in_members(gOrg_member):
             print(gOrg_member.login + " should be added!")
             usersToAdd.append(gOrg_member)
+
+        # Check if we have identified all missing users
+        if diff == len(usersToAdd):
+            break
 
     # Show how many users will be added
     print("Users to be added: " + str(len(usersToAdd)))
