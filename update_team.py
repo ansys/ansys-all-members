@@ -1,5 +1,6 @@
-import github
 import os
+
+import github
 
 # =============================================================================
 #
@@ -10,65 +11,65 @@ import os
 # =============================================================================
 
 # Insert your credentials... None by default
-myPAT = None
+my_pat = None
 
 # Select the org you want to access
-myOrg = "pyansys"
+my_org = "pyansys"
 
 # =============================================================================
 # MODIFY WITH CAUTION FROM THIS POINT ONWARDS
 # =============================================================================
 
 # Check if a value for PAT was provided
-if myPAT is None:
+if my_pat is None:
     # This probably means that we are updating the team automatically using our
     # GitHub action: Team Update... let us read the GitHub Token
-    print("Reading access token from 'TOKEN' envirionment variable...")
-    myPAT = os.environ.get("TOKEN")
+    print("Reading access token from 'TOKEN' environment variable...")
+    my_pat = os.environ.get("TOKEN")
 
 # Create a connection to GitHub
-g = github.Github(myPAT)
+g = github.Github(my_pat)
 
 # Let us get the org
-gOrg = g.get_organization(myOrg)
-print("Connecting to the " + gOrg.name + " organization...")
+g_org = g.get_organization(my_org)
+print("Connecting to the " + g_org.name + " organization...")
 
 # Let us get the users
-gOrg_members = gOrg.get_members()
-print("Retrieving its members... Total count: " + str(gOrg_members.totalCount))
+g_org_members = g_org.get_members()
+print("Retrieving members... Total count: " + str(g_org_members.totalCount))
 
 # Now, let us get the users of our all-members team
-gAllMembersTeam = gOrg.get_team_by_slug("all-members")
-gAllMembersTeam_members = gAllMembersTeam.get_members()
+g_team = g_org.get_team_by_slug("all-members")
+g_team_members = g_team.get_members()
 print(
     "Retrieving the 'all-members' team members... Total count: "
-    + str(gAllMembersTeam_members.totalCount)
+    + str(g_team_members.totalCount)
 )
 
-if gAllMembersTeam_members.totalCount != gOrg_members.totalCount:
+if g_team_members.totalCount != g_org_members.totalCount:
     print("Users missing... let us check which ones!")
 
     # Store the difference
-    diff = gOrg_members.totalCount - gAllMembersTeam_members.totalCount
+    diff = g_org_members.totalCount - g_team_members.totalCount
 
     # Let us check which are the missing members
-    usersToAdd = []
-    for gOrg_member in gOrg_members:
+    users_to_add = []
+    for g_org_member in g_org_members:
         # Check if the user is a member...
-        if not gAllMembersTeam.has_in_members(gOrg_member):
-            print(gOrg_member.login + " should be added!")
-            usersToAdd.append(gOrg_member)
+        if not g_team.has_in_members(g_org_member):
+            print(g_org_member.login + " should be added!")
+            users_to_add.append(g_org_member)
 
         # Check if we have identified all missing users
-        if diff == len(usersToAdd):
+        if diff == len(users_to_add):
             break
 
     # Show how many users will be added
-    print("Users to be added: " + str(len(usersToAdd)))
+    print("Users to be added: " + str(len(users_to_add)))
 
     # Adding missing members to team
-    for user in usersToAdd:
-        gAllMembersTeam.add_to_members(user)
+    for user in users_to_add:
+        g_team.add_to_members(user)
         print(user.login + " has been added!")
 else:
     print("No users missing! All up-to-date.")
