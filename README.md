@@ -1,4 +1,11 @@
 # PyAnsys all-members team
+
+[![PyAnsys](https://img.shields.io/badge/Py-Ansys-ffc107.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABDklEQVQ4jWNgoDfg5mD8vE7q/3bpVyskbW0sMRUwofHD7Dh5OBkZGBgW7/3W2tZpa2tLQEOyOzeEsfumlK2tbVpaGj4N6jIs1lpsDAwMJ278sveMY2BgCA0NFRISwqkhyQ1q/Nyd3zg4OBgYGNjZ2ePi4rB5loGBhZnhxTLJ/9ulv26Q4uVk1NXV/f///////69du4Zdg78lx//t0v+3S88rFISInD59GqIH2esIJ8G9O2/XVwhjzpw5EAam1xkkBJn/bJX+v1365hxxuCAfH9+3b9/+////48cPuNehNsS7cDEzMTAwMMzb+Q2u4dOnT2vWrMHu9ZtzxP9vl/69RVpCkBlZ3N7enoDXBwEAAA+YYitOilMVAAAAAElFTkSuQmCC)](https://docs.pyansys.com/)
+[![Python](https://img.shields.io/badge/Python-%3E%3D3.7-blue)](https://www.python.org/)
+[![Team Update](https://github.com/pyansys/pyansys-all-members/actions/workflows/team_update.yml/badge.svg)](https://github.com/pyansys/pyansys-all-members/actions/workflows/team_update.yml)
+[![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat)](https://github.com/psf/black)
+
 Repository for updating the pyansys/all-members team automatically.
 
 ## Table of contents
@@ -12,7 +19,7 @@ Repository for updating the pyansys/all-members team automatically.
 
 ## Introduction
 GitHub organizations do not provide an off-the-shelf capability of creating
-and maintaining up-to-date an *all-members* team. The goal of the ``update_team`` script
+and maintaining up-to-date an *all-members* team. The goal of the ``update_team.py`` script
 in this repository is to:
 
 * Provided an org and an *all-members* team (i.e. ``@<MY_ORG>/all-members``), update its
