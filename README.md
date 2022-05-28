@@ -7,6 +7,7 @@
    :alt: Ansys
 
 .. |python| image:: https://img.shields.io/badge/Python-%3E%3D3.7-blue
+   :target:
    :alt: Python
 
 .. |GH-CI| image:: https://github.com/ansys/ansys-all-members/actions/workflows/team_update.yml/badge.svg
