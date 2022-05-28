@@ -2,7 +2,6 @@
 from the pyansys Organization. This team basically includes all members
 within the organization."""
 
-
 import os
 
 import github
