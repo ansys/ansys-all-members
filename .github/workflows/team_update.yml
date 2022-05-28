@@ -19,7 +19,7 @@ concurrency:
 jobs:
   style:
     name: Style Check
-    if: github.event_name == 'push'
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
