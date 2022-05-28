@@ -12,7 +12,7 @@ Repository for updating the pyansys/all-members team automatically.
 
 ## Introduction
 GitHub organizations do not provide an off-the-shelf capability of creating
-and mantaining up-to-date an *all-members* team. The goal of the ``update_team`` script
+and maintaining up-to-date an *all-members* team. The goal of the ``update_team`` script
 in this repository is to:
 
 * Provided an org and an *all-members* team (i.e. ``@<MY_ORG>/all-members``), update its
