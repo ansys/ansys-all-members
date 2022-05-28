@@ -54,6 +54,7 @@ print(
     + str(g_team_members.totalCount)
 )
 
+# In case there are missing members... let us add them!
 if g_team_members.totalCount != g_org_members.totalCount:
     print("Users missing... let us check which ones!")
 
