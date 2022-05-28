@@ -1,3 +1,8 @@
+"""Script for automatically updating the pyansys/all-members GitHub team
+from the pyansys Organization. This team basically includes all members
+within the organization."""
+
+
 import os
 
 import github
@@ -11,27 +16,31 @@ import github
 # =============================================================================
 
 # Insert your credentials... None by default
-my_pat = None
+MY_PAT = None
 
 # Select the org you want to access
-my_org = "pyansys"
+MY_ORG = "pyansys"
 
 # =============================================================================
 # MODIFY WITH CAUTION FROM THIS POINT ONWARDS
 # =============================================================================
 
 # Check if a value for PAT was provided
-if my_pat is None:
+if MY_PAT is None:
     # This probably means that we are updating the team automatically using our
     # GitHub action: Team Update... let us read the GitHub Token
     print("Reading access token from 'TOKEN' environment variable...")
-    my_pat = os.environ.get("TOKEN")
+    MY_PAT = os.environ.get("TOKEN", default=None)
+
+# If the value for PAT is still None... throw error!
+if MY_PAT is None:
+    raise ValueError("No PAT value available. Consider adding it.")
 
 # Create a connection to GitHub
-g = github.Github(my_pat)
+g = github.Github(MY_PAT)
 
 # Let us get the org
-g_org = g.get_organization(my_org)
+g_org = g.get_organization(MY_ORG)
 print("Connecting to the " + g_org.name + " organization...")
 
 # Let us get the users
