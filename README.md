@@ -46,7 +46,7 @@ In order to run it, simply modify these values and run:
 ```
 
 Bare in mind that this specific version of the script has already set up the ``MY_ORG`` variable
-to ``pyansys``, since it the organization for which this repository is oriented.
+to ``pyansys``, since it is the organization for which this repository is oriented.
 
 Furthermore, this repository has a GitHub Actions workflow to automate the update of the team
 members on a regular basis (since it has an ``on.schedule`` argument). If you want to make use of
@@ -56,7 +56,7 @@ for further details.
 
 ## Requirements
 In order to run the previous script, one only needs to install ``pygithub``. In order to ease the
-user its installation, we have created a requiorements file: ``requirements.txt``. You can install
+user its installation, we have created a requirements file: ``requirements.txt``. You can install
 the latest version of the package by doing as follows with the ``pip`` package manager:
 
 ```bash
