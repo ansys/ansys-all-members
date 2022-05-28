@@ -62,12 +62,12 @@ if g_team_members.totalCount != g_org_members.totalCount:
     diff = g_org_members.totalCount - g_team_members.totalCount
 
     # Let us check which are the missing members
-    users_to_add = []
+    users_to_add = set()
     for g_org_member in g_org_members:
         # Check if the user is a member...
         if not g_team.has_in_members(g_org_member):
             print(g_org_member.login + " should be added!")
-            users_to_add.append(g_org_member)
+            users_to_add.add(g_org_member)
 
         # Check if we have identified all missing users
         if diff == len(users_to_add):
