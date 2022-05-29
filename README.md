@@ -45,7 +45,7 @@ In order to run it, simply modify these values and run:
     python update_team.py
 ```
 
-Bare in mind that this specific version of the script has already set up the ``MY_ORG`` variable
+Bear in mind that this specific version of the script has already set up the ``MY_ORG`` variable
 to ``pyansys``, since it is the organization for which this repository is oriented.
 
 Furthermore, this repository has a GitHub Actions workflow to automate the update of the team
