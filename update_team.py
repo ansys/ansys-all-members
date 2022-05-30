@@ -50,8 +50,8 @@ print(f"Retrieving members... Total count: {g_org_members.totalCount}")
 g_team = g_org.get_team_by_slug("all-members")
 g_team_members = g_team.get_members()
 print(
-    "Retrieving the 'all-members' team members... " +
-    f"Total count: {g_team_members.totalCount}"
+    "Retrieving the 'all-members' team members... "
+    + f"Total count: {g_team_members.totalCount}"
 )
 
 # In case there are missing members... let us add them!
