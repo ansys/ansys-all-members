@@ -12,7 +12,7 @@ Repository for updating the ansys/all-members team automatically.
 
 <!--ts-->
    * [Introduction](#introduction)
-   * [How does it work?](#how-does-it-work?)
+   * [How does it work?](#how-does-it-work)
    * [Requirements](#requirements)
 <!--te-->
 
