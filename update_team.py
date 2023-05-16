@@ -1,5 +1,5 @@
-"""Script for automatically updating the pyansys/all-members GitHub team
-from the pyansys Organization. This team basically includes all members
+"""Script for automatically updating the ansys/all-members GitHub team
+from the Ansys Organization. This team basically includes all members
 within the organization."""
 
 import os
@@ -18,7 +18,7 @@ import github
 MY_PAT = None
 
 # Select the org you want to access
-MY_ORG = "pyansys"
+MY_ORG = "ansys"
 
 # =============================================================================
 # MODIFY WITH CAUTION FROM THIS POINT ONWARDS

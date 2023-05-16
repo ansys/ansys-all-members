@@ -15,6 +15,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  MAIN_PYTHON_VERSION: '3.11'
+
 jobs:
   style:
     name: Style Check
@@ -26,7 +29,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - name: Install pre-commit
         run: pip install pre-commit
@@ -35,7 +38,7 @@ jobs:
         run: pre-commit run --all-files || ( git status --short ; git diff ; exit 1 )
 
   team_update:
-    name: Update the pyansys/all-members team
+    name: Update the ansys/all-members team
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +47,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - name: Install project requirements
         run: |
