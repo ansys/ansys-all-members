@@ -1,9 +1,8 @@
 name: Team Update
 
 on:
-  schedule: # UTC at 0200 --> Temporarily every 10 minutes due to reorg
-#     - cron: "0 2 * * *"
-      - cron: "*/10 * * * *"
+  schedule: # UTC at 0200
+      - cron: "0 2 * * *"
   workflow_dispatch:
   pull_request:
   push:
