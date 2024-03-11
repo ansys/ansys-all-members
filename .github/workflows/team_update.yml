@@ -60,4 +60,4 @@ jobs:
           python update_team.py
 
       - name: Update repository if needed to avoid disabling workflow
-        uses: gautamkrishnar/keepalive-workflow@v1
+        uses: gautamkrishnar/keepalive-workflow@v2
