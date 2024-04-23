@@ -3,6 +3,8 @@ name: Team Update
 on:
   schedule: # UTC at 0200
       - cron: "0 2 * * *"
+  repository_dispatch:
+    types: [update_all_members_team]
   workflow_dispatch:
   pull_request:
   push:
