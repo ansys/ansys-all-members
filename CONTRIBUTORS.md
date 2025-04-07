@@ -6,4 +6,5 @@
 
 ## Individual Contributors
 
+* [Alex Kaszynski](https://github.com/akaszynski)
 * [Maxime Rey](https://github.com/MaxJPRey)
