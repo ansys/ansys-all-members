@@ -60,6 +60,3 @@ jobs:
           TOKEN: ${{ secrets.ALL_MEMBERS_UPD_TOKEN }}
         run: |
           python update_team.py
-
-      - name: Update repository if needed to avoid disabling workflow
-        uses: gautamkrishnar/keepalive-workflow@v2
