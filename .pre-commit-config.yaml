@@ -1,4 +1,5 @@
 repos:
+
 - repo: https://github.com/psf/black
   rev: 23.3.0
   hooks:
@@ -8,7 +9,9 @@ repos:
   rev: 5.12.0
   hooks:
   - id: isort
-    args: ["--profile", "black"]
+    args:
+    - --profile
+    - black
 
 - repo: https://github.com/PyCQA/flake8
   rev: 6.0.0
@@ -29,4 +32,11 @@ repos:
 - repo: https://github.com/python-jsonschema/check-jsonschema
   rev: 0.23.0
   hooks:
-    - id: check-github-workflows
+  - id: check-github-workflows
+
+- repo: https://github.com/ansys/pre-commit-hooks
+  rev: v0.5.2
+  hooks:
+  - id: add-license-headers
+    args:
+    - --start_year=2022
