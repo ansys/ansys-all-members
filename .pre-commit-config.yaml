@@ -38,5 +38,6 @@ repos:
   rev: v0.5.2
   hooks:
   - id: add-license-headers
+    files: 'update_team.py'
     args:
     - --start_year=2022
