@@ -8,3 +8,4 @@
 
 * [Alex Kaszynski](https://github.com/akaszynski)
 * [Maxime Rey](https://github.com/MaxJPRey)
+* [Sébastien Morais](https://github.com/SMoraisAnsys)
