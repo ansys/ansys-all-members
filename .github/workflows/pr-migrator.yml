@@ -1,0 +1,55 @@
+name: migrator
+on:
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  migrate-fork-pr:
+    name: "Migrate fork PR"
+    if: |
+      github.event.issue.pull_request != null &&
+      (
+        contains(github.event.comment.body, '@pyansys-ci-bot migrate') ||
+        contains(github.event.comment.body, '@pyansys-ci-bot sync')
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Push migration branches
+      pull-requests: write # Create PRs, add reactions/comments
+    steps:
+      - name: "Determine inputs"
+        id: inputs
+        shell: bash
+        env:
+          PR_NUMBER_VALUE: ${{ github.event.issue.number }}
+          COMMENT_ID_VALUE: ${{ github.event.comment.id }}
+          USER_VALUE: ${{ github.event.comment.user.login }}
+          COMMENT_BODY_VALUE: ${{ github.event.comment.body }}
+        run: |
+          echo "pr-number=${PR_NUMBER_VALUE}" >> "$GITHUB_OUTPUT"
+          echo "comment-id=${COMMENT_ID_VALUE}" >> "$GITHUB_OUTPUT"
+          echo "user=${USER_VALUE}" >> "$GITHUB_OUTPUT"
+          {
+            echo "comment-body<<EOF"
+            echo "${COMMENT_BODY_VALUE}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: "Migrate fork PR"
+        uses: ansys/actions/hk-migrate-fork-pr@feat/hk-forked-pr-migrator
+        with:
+          pr-number: ${{ steps.inputs.outputs.pr-number }}
+          comment-id: ${{ steps.inputs.outputs.comment-id }}
+          user-triggering: ${{ steps.inputs.outputs.user }}
+          comment-body: ${{ steps.inputs.outputs.comment-body }}
+          github-token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
+          bot-username: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
+          bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
+          team-slug: 'pyansys-core'
+          organization: 'ansys'
