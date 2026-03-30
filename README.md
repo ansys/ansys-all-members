@@ -59,8 +59,10 @@ for further details.
 ## Requirements
 In order to run the previous script, one only needs to install ``pygithub``. In order to ease the
 user its installation, we have created a requirements file: ``requirements.txt``. You can install
-the latest version of the package by doing as follows with the ``pip`` package manager:
+the latest version of the package by doing as follows with the ``pip`` or ``uv`` package manager:
 
 ```bash
-    pip install -r requirements.txt
+    # Command for different package managers
+    pip install -r requirements.txt # with pip, or
+    uv pip install -r requirements.txt # with uv
 ```
