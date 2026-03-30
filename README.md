@@ -62,6 +62,7 @@ user its installation, we have created a requirements file: ``requirements.txt``
 the latest version of the package by doing as follows with the ``pip`` or ``uv`` package manager:
 
 ```bash
+    # Command for different packages
     pip install -r requirements.txt # with pip, or
     uv pip install -r requirements.txt # with uv
 ```
