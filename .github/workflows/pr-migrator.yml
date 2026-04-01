@@ -1,4 +1,4 @@
-name: migrator
+name: "PR Migrator"
 on:
   issue_comment:
     types: [created]
