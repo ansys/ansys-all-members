@@ -47,7 +47,6 @@ jobs:
           pr-number: ${{ steps.inputs.outputs.pr-number }}
           comment-id: ${{ steps.inputs.outputs.comment-id }}
           user-triggering: ${{ steps.inputs.outputs.user }}
-          comment-body: ${{ steps.inputs.outputs.comment-body }}
           github-token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
           bot-username: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
           bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
