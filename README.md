@@ -52,7 +52,7 @@ to ``ansys``, since it is the organization for which this repository is oriented
 
 Furthermore, this repository has a GitHub Actions workflow to automate the update of the team
 members on a regular basis (since it has an ``on.schedule`` argument). If you want to make use of
-this capability take into account that a PAT must be stored as a repository secret. Check the 
+this capability take into account that a PAT must be stored as a repository secret. Check the
 [workflow file](https://github.com/ansys/ansys-all-members/blob/main/.github/workflows/team_update.yml)
 for further details.
 
