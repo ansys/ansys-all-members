@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  MAIN_PYTHON_VERSION: '3.13'
+  MAIN_PYTHON_VERSION: '3.14'
 
 jobs:
   style:
@@ -26,7 +26,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.3
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.3
 
       - name: Setup Python
         uses: actions/setup-python@v6
