@@ -58,7 +58,7 @@ if MY_PAT is None:
     raise ValueError("No PAT value available. Consider adding it.")
 
 # Create a connection to GitHub
-g = github.Github(MY_PAT)
+g = github.Github(auth=github.Auth.Token(MY_PAT))
 
 # Let us get the org
 g_org = g.get_organization(MY_ORG)
