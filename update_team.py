@@ -99,16 +99,13 @@ if g_team_members.totalCount != g_org_members.totalCount:
                 f"{total_members} members; skipped {total_members - checked_count}.",
                 flush=True,
             )
+            break
         elif checked_count % 25 == 0 or checked_count == total_members:
             print(
                 f"Checked {checked_count} of {total_members} organization members; "
                 f"{total_members - checked_count} remaining.",
                 flush=True,
             )
-
-        # Check if we have identified all missing users
-        if diff == len(users_to_add):
-            break
 
     # Show how many users will be added
     print(f"Users to be added: {len(users_to_add)}")
