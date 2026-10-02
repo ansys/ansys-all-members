@@ -96,7 +96,8 @@ if g_team_members.totalCount != g_org_members.totalCount:
         if diff == len(users_to_add):
             print(
                 f"All missing users identified after checking {checked_count} of "
-                f"{total_members} members; skipped {total_members - checked_count}."
+                f"{total_members} members; skipped {total_members - checked_count}.",
+                flush=True,
             )
         elif checked_count % 25 == 0 or checked_count == total_members:
             print(
