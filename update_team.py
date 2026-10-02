@@ -58,7 +58,7 @@ if MY_PAT is None:
     raise ValueError("No PAT value available. Consider adding it.")
 
 # Create a connection to GitHub
-g = github.Github(MY_PAT)
+g = github.Github(auth=github.Auth.Token(MY_PAT))
 
 # Let us get the org
 g_org = g.get_organization(MY_ORG)
@@ -85,11 +85,26 @@ if g_team_members.totalCount != g_org_members.totalCount:
 
     # Let us check which are the missing members
     users_to_add = set()
-    for g_org_member in g_org_members:
+    total_members = g_org_members.totalCount
+    for checked_count, g_org_member in enumerate(g_org_members, start=1):
         # Check if the user is a member...
         if not g_team.has_in_members(g_org_member):
             print(f"{g_org_member.login} should be added!")
             users_to_add.add(g_org_member)
+
+        # Report progress while checking organization members
+        if diff == len(users_to_add):
+            print(
+                f"All missing users identified after checking {checked_count} of "
+                f"{total_members} members; skipped {total_members - checked_count}.",
+                flush=True,
+            )
+        elif checked_count % 25 == 0 or checked_count == total_members:
+            print(
+                f"Checked {checked_count} of {total_members} organization members; "
+                f"{total_members - checked_count} remaining.",
+                flush=True,
+            )
 
         # Check if we have identified all missing users
         if diff == len(users_to_add):
@@ -101,7 +116,7 @@ if g_team_members.totalCount != g_org_members.totalCount:
     # Adding missing members to team
     for user in users_to_add:
         try:
-            g_team.add_to_members(user)
+            g_team.add_membership(user)
             print(f"{user.login} has been added!")
         except github.GithubException as e:
             print(f"Error adding {user.login}: {e}")
